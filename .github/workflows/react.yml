@@ -11,7 +11,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v1
       - run: npm install
-      - run: npm run build      
+      - run: npm run build  
+      - run: cp /tmp/react-js-sample/build/ /var/wwww/
+    
 
       - name: Deploy to my EC2 instance
         uses: easingthemes/ssh-deploy@v2.1.5
