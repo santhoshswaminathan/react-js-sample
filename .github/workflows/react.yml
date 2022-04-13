@@ -4,8 +4,6 @@ on:
   push: 
     branches: [master]
           
-  
-
 jobs:
   deploy:
     name: Push to EC2 Instance
@@ -18,15 +16,13 @@ jobs:
         run: npm install
       - name: create production build
         run: npm run build  
-    
-    
 
       - name: Deploy to my EC2 instance
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SOURCE: "./build" ##build/##multiplejobs/multipleenvs
-          REMOTE_HOST: "ec2-18-116-117-17.us-east-2.compute.amazonaws.com"
+          REMOTE_HOST: "ec2-54-91-184-148.compute-1.amazonaws.com"
           REMOTE_USER: "ubuntu"
           TARGET: " /tmp/react-js-sample/"
       
