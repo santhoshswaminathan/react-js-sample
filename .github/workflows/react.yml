@@ -1,4 +1,4 @@
-name: CICD testing
+name: CICD testing #naming
 
 on: 
   push: 
