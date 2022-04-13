@@ -1,6 +1,7 @@
 name: Push-to-EC2
 
 on: push  
+    branches: [ main ]
   
 
 jobs:
@@ -11,9 +12,10 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v1
-      - name: install dependencies ##check name 
+      - name: install dependencies ##check name
         run: npm install
-      - run: npm run build  
+      - name: create production build
+        run: npm run build  
     
     
 
