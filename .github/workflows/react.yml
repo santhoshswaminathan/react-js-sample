@@ -1,7 +1,7 @@
 name: Push-to-EC2
 
 on: push  
-      branches: 
+    branches: 
           - master
   
 
