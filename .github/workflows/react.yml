@@ -24,6 +24,6 @@ jobs:
           SOURCE: "./build" ##build/##multiplejobs/multipleenvs
           REMOTE_HOST: "ec2-54-91-184-148.compute-1.amazonaws.com"
           REMOTE_USER: "ubuntu"
-          TARGET: " /tmp/react-js-sample/"
+          TARGET: "/tmp/react-js-sample/"
       
 
