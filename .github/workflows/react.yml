@@ -1,12 +1,11 @@
-name: Build and deploy rhythmorchestrator ms
+name: Build and deploy
 
 on:
-
   workflow_dispatch:
     inputs:
       environment:
         type: choice
-        description: "Environment"
+        description: "test environment"
         required: true
         default: "dev"
         options:
@@ -18,8 +17,6 @@ on:
 
   release:
     types: [published]
-
-
 
 
 # name: CICD testing #naming
