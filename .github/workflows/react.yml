@@ -1,29 +1,53 @@
-name: CICD testing #naming
+name: Build and deploy rhythmorchestrator ms
 
-on: 
-  push: 
-    branches: [master]
+on:
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: "Environment"
+        required: true
+        default: "dev"
+        options:
+          - dev
+          - qa
+          - stg
+          - prod
+          - dr
+
+  release:
+    types: [published]
+
+
+
+
+# name: CICD testing #naming
+
+# on: 
+#   push: 
+#     branches: [master]
           
-jobs:
-  deploy:
-    name: Push to EC2 Instance
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     name: Push to EC2 Instance
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v1
-      - name: install dependencies ##check name
-        run: npm install
-      - name: create production build
-        run: npm run build  
+#     steps:
+#       - name: Checkout the code
+#         uses: actions/checkout@v1
+#       - name: install dependencies ##check name
+#         run: npm install
+#       - name: create production build
+#         run: npm run build  
 
-      - name: Deploy to my EC2 instance
-        uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SOURCE: "./build" ##build/##multiplejobs/multipleenvs
-          REMOTE_HOST: "ec2-54-91-184-148.compute-1.amazonaws.com"
-          REMOTE_USER: "ubuntu"
-          TARGET: "/tmp/react-js-sample/"
+#       - name: Deploy to my EC2 instance
+#         uses: easingthemes/ssh-deploy@v2.1.5
+#         env:
+#           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+#           SOURCE: "./build" ##build/##multiplejobs/multipleenvs
+#           REMOTE_HOST: "ec2-54-91-184-148.compute-1.amazonaws.com"
+#           REMOTE_USER: "ubuntu"
+#           TARGET: "/tmp/react-js-sample/"
       
 
